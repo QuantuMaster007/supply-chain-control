@@ -1,0 +1,1 @@
+inv_snapshot_id,snapshot_date,site_id,part_id,on_hand_qty,on_order_qty,allocated_qty,avg_daily_usage,days_of_supply,shortage_risk_flag,kit_ready_flag

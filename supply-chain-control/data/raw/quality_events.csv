@@ -1,0 +1,1 @@
+quality_event_id,event_type,supplier_id,part_id,site_id,event_date,close_date,severity,disposition,qty_affected,cost_impact_usd,downtime_minutes

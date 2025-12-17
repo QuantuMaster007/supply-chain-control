@@ -1,0 +1,7 @@
+# Tableau Public Workbook Placeholder
+
+Paste your Tableau Public dashboard link here once published.
+
+Notes:
+- Tableau Public is simplest with a flat extract: data/processed/fact_supply_chain_flat.csv
+- Or connect directly to raw facts using Relationships (po_lines + shipments + optional snapshots).

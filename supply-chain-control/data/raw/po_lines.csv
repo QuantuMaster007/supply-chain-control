@@ -1,0 +1,1 @@
+po_line_id,po_id,po_line_num,buyer,supplier_id,supplier_name,commodity,criticality_tier,program_id,build_phase,ship_to_site_id,unit_price,ordered_qty,open_qty,order_date,need_by_date,supplier_promise_date,last_confirmed_date,reschedule_count,po_status,cancel_flag,quality_hold_flag

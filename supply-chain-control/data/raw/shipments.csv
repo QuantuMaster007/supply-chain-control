@@ -1,0 +1,1 @@
+shipment_line_id,shipment_id,po_line_id,supplier_id,part_id,ship_qty,ship_date,eta_date,delivery_date,mode,freight_cost_usd,expedite_flag,carrier_name,lane,asn_sent_flag,delay_reason_code
