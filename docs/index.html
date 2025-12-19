@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supply Chain Control Tower</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header>
+    <h1>Supply Chain Control Tower</h1>
+    <p>Semiconductor Manufacturing — OTIF, Past Due, Expedite, Commit Health</p>
+  </header>
+  <div class="container">
+    <div class="controls">
+      <select id="programFilter"><option value="">All Programs</option></select>
+      <select id="commodityFilter"><option value="">All Commodities</option></select>
+      <select id="siteFilter"><option value="">All Sites</option></select>
+      <select id="supplierFilter"><option value="">All Suppliers</option></select>
+      <input type="date" id="startDate" placeholder="Start Need-by">
+      <input type="date" id="endDate" placeholder="End Need-by">
+      <button id="resetBtn">Reset Filters</button>
+      <button id="exportBtn">Export Filtered CSV</button>
+    </div>
+    <div class="grid cards">
+      <div class="card">
+        <div class="kpiLabel">OTIF %</div>
+        <div class="kpiValue" id="kOtif">—</div>
+        <div class="kpiDelta">On-time AND in-full</div>
+      </div>
+      <div class="card">
+        <div class="kpiLabel">Past Due $</div>
+        <div class="kpiValue" id="kPastDue">—</div>
+        <div class="kpiDelta">Open qty × unit price (need-by < today)</div>
+      </div>
+      <div class="card">
+        <div class="kpiLabel">Expedite Spend</div>
+        <div class="kpiValue" id="kExpedite">—</div>
+        <div class="kpiDelta">Freight cost where expedite_flag = true</div>
+      </div>
+      <div class="card">
+        <div class="kpiLabel">Avg Commit Slip</div>
+        <div class="kpiValue" id="kSlip">—</div>
+        <div class="kpiDelta">Delivery date − promise date</div>
+      </div>
+      <div class="card">
+        <div class="kpiLabel">Reschedule Rate</div>
+        <div class="kpiValue" id="kChurn">—</div>
+        <div class="kpiDelta">% lines with reschedule_count > 0</div>
+      </div>
+      <div class="card">
+        <div class="kpiLabel">Quality Hold Rate</div>
+        <div class="kpiValue" id="kHold">—</div>
+        <div class="kpiDelta">% lines with quality_hold_flag = true</div>
+      </div>
+    </div>
+
+    <div class="grid row">
+      <div class="panel">
+        <h2>Weekly OTIF + Past Due + Expedite</h2>
+        <div id="trend" style="height:360px;"></div>
+      </div>
+      <div class="panel">
+        <h2>Top Suppliers by Past Due $ (Pareto)</h2>
+        <div id="pareto" style="height:360px;"></div>
+      </div>
+    </div>
+
+    <div class="grid row">
+      <div class="panel">
+        <h2>Late-Risk Heatmap (Supplier × Site)</h2>
+        <div id="heatmap" style="height:420px;"></div>
+      </div>
+      <div class="panel">
+        <h2>Freight Spend by Mode</h2>
+        <div id="logistics" style="height:420px;"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Top Risk Lines (Past Due $)</h2>
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>PO Line</th><th>Program</th><th>Phase</th><th>Supplier</th><th>Commodity</th>
+              <th>Tier</th><th>Site</th><th>Need-by</th><th>Delivery</th><th>Past Due $</th>
+              <th>Reschedules</th><th>Expedite</th><th>Q Hold</th><th>Delay Code</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <div class="footer">
+        Data source: <code>data/processed/fact_supply_chain_flat.csv</code> (replace with your real export anytime — keep headers).
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

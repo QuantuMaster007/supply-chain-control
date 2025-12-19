@@ -62,7 +62,6 @@ This dataset is designed for semiconductor manufacturing supply chain reporting:
 | delay_reason_code | string | CUST | Customs/Capacity/Docs/Weather |
 | delay_reason_detail | string | Customs exam | Detail |
 | asn_sent_flag | bool | true | ASN sent before arrival |
-| asn_sent_date | date | 2025-02-10 | ASN timestamp |
 | received_in_full_flag | bool | true | Delivered qty equals ship qty |
 | damage_flag | bool | false | Damaged in transit |
 
@@ -98,22 +97,3 @@ This dataset is designed for semiconductor manufacturing supply chain reporting:
 | qty_affected | number | 1 | Quantity impacted |
 | cost_impact_usd | number | 980 | Estimated cost impact |
 | downtime_minutes | number | 120 | Production impact (optional) |
-
-## 5) Minimal dimensions
-### dim_supplier
-supplier_id, supplier_name, supplier_region, supplier_country, supplier_risk_tier, preferred_flag
-
-### dim_part
-part_id, part_description, commodity, criticality_tier, lifecycle_status, make_buy, lead_time_days_std
-
-### dim_site
-site_id, site_name, site_type (Factory/DC/Supplier), city, state, country
-
-### dim_carrier
-carrier_id, carrier_name, carrier_type, scac (optional)
-
-### dim_program
-program_id, program_name, build_phase_default, product_line
-
-### dim_calendar
-date, week, month, quarter, year, fiscal_month (optional)

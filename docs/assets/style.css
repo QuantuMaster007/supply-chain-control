@@ -1,0 +1,52 @@
+:root{
+  --bg:#0b1220; --panel:#111a2e; --muted:#9fb0d0; --text:#e7efff;
+  --accent:#79a8ff; --good:#3ddc97; --bad:#ff6b6b; --warn:#ffd166;
+  --border:rgba(255,255,255,.08);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: radial-gradient(1100px 600px at 20% 0%, #132042 0%, var(--bg) 55%) fixed;
+  color:var(--text);
+}
+header{
+  padding:20px 22px; border-bottom:1px solid var(--border);
+  position:sticky; top:0; backdrop-filter: blur(10px);
+  background: rgba(11,18,32,.75); z-index:10;
+}
+h1{margin:0 0 6px 0; font-size:22px}
+.sub{color:var(--muted); font-size:13px}
+.container{max-width:1280px; margin:0 auto; padding:16px 18px 42px}
+.grid{display:grid; gap:12px}
+.cards{grid-template-columns: repeat(6, minmax(0, 1fr)); margin-top:12px}
+@media (max-width:1100px){ .cards{grid-template-columns: repeat(3, 1fr);} }
+@media (max-width:720px){ .cards{grid-template-columns: repeat(2, 1fr);} }
+
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid var(--border);
+  border-radius:16px; padding:12px 12px 10px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.35);
+}
+.kpiLabel{color:var(--muted); font-size:12px}
+.kpiValue{font-size:18px; margin-top:6px; font-weight:700}
+.kpiDelta{font-size:12px; margin-top:6px; color:var(--muted)}
+.badge{display:inline-block; padding:2px 8px; border-radius:999px; border:1px solid var(--border); color:var(--muted); font-size:12px}
+
+.row{grid-template-columns: 1.3fr .7fr; margin-top:12px}
+@media (max-width:1100px){ .row{grid-template-columns:1fr} }
+
+.panel{
+  background: rgba(17,26,46,.62);
+  border:1px solid var(--border);
+  border-radius:16px; padding:12px;
+}
+.panel h2{margin:0 0 8px 0; font-size:14px; color:var(--text)}
+.controls{display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end; margin-bottom:12px}
+.control{min-width:180px; flex:1}
+.tableWrap{overflow-x:auto}
+table{width:100%; border-collapse:collapse}
+th,td{padding:6px 8px; text-align:left; border-bottom:1px solid var(--border)}
+th{font-size:12px; color:var(--muted); font-weight:500}
+td{font-size:13px}
+.footer{margin-top:12px; font-size:12px; color:var(--muted)}

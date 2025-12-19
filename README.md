@@ -59,11 +59,11 @@ Use either:
    ![Case 03](docs/images/case03.png)
 
 4. **PPV + Quote Variance on Precision Machined Parts**  
-   `docs/case-studies/case-study-04-ppv-should-cost.md`  
+   `docs/case-studies/case-study-04-commit-health-reschedule.md`  
    ![Case 04](docs/images/case04.png)
 
 5. **Line-Down Prevention via ASN + Dock-to-Stock + Kitting**  
-   `docs/case-studies/case-study-05-line-down-prevention.md`  
+   `docs/case-studies/case-study-05-quality-hold-recovery.md`  
    ![Case 05](docs/images/case05.png)
 
 ---
