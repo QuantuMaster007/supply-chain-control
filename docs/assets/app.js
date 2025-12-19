@@ -69,28 +69,41 @@ function loadData(){
   $('loading').style.display = 'block';
   $('main').style.display = 'none';
   $('error').style.display = 'none';
-  Papa.parse(DATA_URL, {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete: (results) => {
-      console.log("Data loaded successfully, rows:", results.data.length);
-      $('loading').style.display = 'none';
-      $('main').style.display = 'block';
-      RAW = results.data.map(r => {
-        computeDerived(r);
-        return r;
+  fetch(DATA_URL)
+    .then(response => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.text();
+    })
+    .then(csvText => {
+      console.log("CSV fetched, length:", csvText.length);
+      Papa.parse(csvText, {
+        header: true,
+        skipEmptyLines: true,
+        complete: (results) => {
+          console.log("Data parsed successfully, rows:", results.data.length);
+          $('loading').style.display = 'none';
+          $('main').style.display = 'block';
+          RAW = results.data.map(r => {
+            computeDerived(r);
+            return r;
+          });
+          populateFilters();
+          applyFilters();
+        },
+        error: (err) => {
+          console.error("Parse error:", err);
+          $('loading').style.display = 'none';
+          $('error').textContent = "Error parsing data: " + (err.message || "Unknown error");
+          $('error').style.display = 'block';
+        }
       });
-      populateFilters();
-      applyFilters();
-    },
-    error: (err) => {
-      console.error("CSV load error:", err);
+    })
+    .catch(err => {
+      console.error("Fetch error:", err);
       $('loading').style.display = 'none';
-      $('error').textContent = "Error loading data: " + (err.message || "Unknown error");
+      $('error').textContent = "Error loading data: " + err.message;
       $('error').style.display = 'block';
-    }
-  });
+    });
 }
 
 function populateFilters(){
