@@ -14,15 +14,37 @@
     <p>Semiconductor Manufacturing — OTIF, Past Due, Expedite, Commit Health</p>
   </header>
   <div class="container">
+    <div id="loading" class="loading">Loading dashboard data...</div>
+    <div id="error" class="error" style="display:none;"></div>
+    <div id="main" style="display:none;">
     <div class="controls">
-      <select id="programFilter"><option value="">All Programs</option></select>
-      <select id="commodityFilter"><option value="">All Commodities</option></select>
-      <select id="siteFilter"><option value="">All Sites</option></select>
-      <select id="supplierFilter"><option value="">All Suppliers</option></select>
-      <input type="date" id="startDate" placeholder="Start Need-by">
-      <input type="date" id="endDate" placeholder="End Need-by">
+      <div class="control">
+        <label>Program</label>
+        <select id="programFilter"><option value="">All Programs</option></select>
+      </div>
+      <div class="control">
+        <label>Commodity</label>
+        <select id="commodityFilter"><option value="">All Commodities</option></select>
+      </div>
+      <div class="control">
+        <label>Site</label>
+        <select id="siteFilter"><option value="">All Sites</option></select>
+      </div>
+      <div class="control">
+        <label>Supplier</label>
+        <select id="supplierFilter"><option value="">All Suppliers</option></select>
+      </div>
+      <div class="control">
+        <label>Start Need-by</label>
+        <input type="date" id="startDate">
+      </div>
+      <div class="control">
+        <label>End Need-by</label>
+        <input type="date" id="endDate">
+      </div>
       <button id="resetBtn">Reset Filters</button>
       <button id="exportBtn">Export Filtered CSV</button>
+      <div id="recordCount" style="align-self:center; font-size:14px; color:var(--muted);">Records: —</div>
     </div>
     <div class="grid cards">
       <div class="card">
@@ -96,6 +118,7 @@
       <div class="footer">
         Data source: <code>data/processed/fact_supply_chain_flat.csv</code> (replace with your real export anytime — keep headers).
       </div>
+    </div>
     </div>
   </div>
 

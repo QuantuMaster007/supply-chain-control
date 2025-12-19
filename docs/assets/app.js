@@ -65,11 +65,16 @@ function computeDerived(r){
 }
 
 function loadData(){
+  $('loading').style.display = 'block';
+  $('main').style.display = 'none';
+  $('error').style.display = 'none';
   Papa.parse(DATA_URL, {
     download: true,
     header: true,
     skipEmptyLines: true,
     complete: (results) => {
+      $('loading').style.display = 'none';
+      $('main').style.display = 'block';
       RAW = results.data.map(r => {
         computeDerived(r);
         return r;
@@ -77,7 +82,12 @@ function loadData(){
       populateFilters();
       applyFilters();
     },
-    error: (err) => console.error("CSV load error:", err)
+    error: (err) => {
+      $('loading').style.display = 'none';
+      $('error').textContent = "Error loading data: " + err.message;
+      $('error').style.display = 'block';
+      console.error("CSV load error:", err);
+    }
   });
 }
 
@@ -118,6 +128,7 @@ function applyFilters(){
   renderKPIs();
   renderCharts();
   renderTable();
+  $('recordCount').textContent = `Records: ${FILTERED.length}`;
 }
 
 function renderKPIs(){
@@ -160,14 +171,15 @@ function renderCharts(){
   const expedite$ = weekKeys.map(w => weeks[w].expedite);
 
   Plotly.newPlot('trend', [
-    {x: weekKeys, y: otifPct, name: 'OTIF %', type: 'scatter', mode: 'lines+markers', yaxis: 'y1'},
-    {x: weekKeys, y: pastDue$, name: 'Past Due $', type: 'bar', yaxis: 'y2'},
-    {x: weekKeys, y: expedite$, name: 'Expedite $', type: 'bar', yaxis: 'y2'}
+    {x: weekKeys, y: otifPct, name: 'OTIF %', type: 'scatter', mode: 'lines+markers', yaxis: 'y1', hovertemplate: 'Week: %{x}<br>OTIF: %{y:.1f}%'},
+    {x: weekKeys, y: pastDue$, name: 'Past Due $', type: 'bar', yaxis: 'y2', hovertemplate: 'Week: %{x}<br>Past Due: %{y:$,.0f}'},
+    {x: weekKeys, y: expedite$, name: 'Expedite $', type: 'bar', yaxis: 'y2', hovertemplate: 'Week: %{x}<br>Expedite: %{y:$,.0f}'}
   ], {
     margin: {t:20, r:20, b:40, l:40},
     yaxis: {title: 'OTIF %'},
     yaxis2: {title: '$', overlaying: 'y', side: 'right'},
-    showlegend: true
+    showlegend: true,
+    hovermode: 'x unified'
   });
 
   // Pareto: top suppliers by past due $
@@ -181,7 +193,7 @@ function renderCharts(){
   const suppValues = sortedSupps.map(x=>x[1]);
 
   Plotly.newPlot('pareto', [{
-    x: suppNames, y: suppValues, type: 'bar', marker: {color: 'rgba(255,107,107,0.7)'}
+    x: suppNames, y: suppValues, type: 'bar', marker: {color: 'rgba(255,107,107,0.7)'}, hovertemplate: 'Supplier: %{x}<br>Past Due: %{y:$,.0f}'
   }], {margin: {t:20, r:20, b:60, l:40}});
 
   // Heatmap: supplier x site late counts
@@ -199,7 +211,7 @@ function renderCharts(){
   const z = supps.map(s => sites.map(site => heatmap[s][site] || 0));
 
   Plotly.newPlot('heatmap', [{
-    z: z, x: sites, y: supps, type: 'heatmap', colorscale: 'Reds'
+    z: z, x: sites, y: supps, type: 'heatmap', colorscale: 'Reds', hovertemplate: 'Supplier: %{y}<br>Site: %{x}<br>Late Count: %{z}'
   }], {margin: {t:20, r:20, b:40, l:100}});
 
   // Logistics: freight spend by mode
@@ -212,12 +224,12 @@ function renderCharts(){
   const spends = modes.map(m => modeSpend[m]);
 
   Plotly.newPlot('logistics', [{
-    labels: modes, values: spends, type: 'pie'
+    labels: modes, values: spends, type: 'pie', hovertemplate: 'Mode: %{label}<br>Spend: %{value:$,.0f}<br>%{percent}'
   }], {margin: {t:20, r:20, b:20, l:20}});
 }
 
 function renderTable(){
-  const topRisk = FILTERED.filter(r => r.pastDue$ > 0).sort((a,b)=>b.pastDue$ - a.pastDue$).slice(0,40);
+  const topRisk = FILTERED.filter(r => r.pastDue$ > 0).sort((a,b)=>b.pastDue$ - a.pastDue$).slice(0,50);
   const tbody = $('tbody');
   tbody.innerHTML = topRisk.map(r => `
     <tr>
