@@ -65,6 +65,7 @@ function computeDerived(r){
 }
 
 function loadData(){
+  console.log("Starting data load from:", DATA_URL);
   $('loading').style.display = 'block';
   $('main').style.display = 'none';
   $('error').style.display = 'none';
@@ -73,6 +74,7 @@ function loadData(){
     header: true,
     skipEmptyLines: true,
     complete: (results) => {
+      console.log("Data loaded successfully, rows:", results.data.length);
       $('loading').style.display = 'none';
       $('main').style.display = 'block';
       RAW = results.data.map(r => {
@@ -83,10 +85,10 @@ function loadData(){
       applyFilters();
     },
     error: (err) => {
-      $('loading').style.display = 'none';
-      $('error').textContent = "Error loading data: " + err.message;
-      $('error').style.display = 'block';
       console.error("CSV load error:", err);
+      $('loading').style.display = 'none';
+      $('error').textContent = "Error loading data: " + (err.message || "Unknown error");
+      $('error').style.display = 'block';
     }
   });
 }
