@@ -1,8 +1,13 @@
+Here’s an updated **README welcome page** that swaps **Tableau → Power BI**, and references your attached PBIX (recommend storing it in the repo under `powerbi/`).
+
+```md
 # supply-chain-control 🚚⚡📦
-A Tableau Public dashboard + case-study portfolio that mirrors **semiconductor-grade supply chain governance**—spanning supplier performance, PO/commit health, inbound logistics, shortages, and factory readiness for complex tool/module manufacturing.
+A **Power BI** dashboard + case-study portfolio that mirrors **semiconductor-grade supply chain governance**—spanning supplier performance, PO/commit health, inbound logistics, shortages, and factory readiness for complex tool/module manufacturing.
 
 <p align="left">
-  <a href="#"><b>🔗 Tableau Public Dashboard (add link)</b></a>
+  <a href="#"><b>🔗 Power BI Report (add link)</b></a>
+  &nbsp;•&nbsp;
+  <a href="powerbi/supply_chain_dashboard.pbix"><b>📊 Download PBIX</b></a>
   &nbsp;•&nbsp;
   <a href="docs/kpi_glossary.md"><b>📘 KPI Glossary</b></a>
   &nbsp;•&nbsp;
@@ -24,7 +29,7 @@ A Tableau Public dashboard + case-study portfolio that mirrors **semiconductor-g
 
 ---
 
-## Dashboard overview (Tableau Public)
+## Dashboard overview (Power BI)
 Add your screenshots in `docs/images/` and keep these paths unchanged:
 
 **Dashboard Preview**
@@ -36,12 +41,25 @@ Add your screenshots in `docs/images/` and keep these paths unchanged:
 **Pareto / Treemap Example**
 ![Treemap Example](docs/images/treemap_example.png)
 
+> Tip: If you publish the report to the Power BI Service, paste the **Share link** (or “Publish to web” link, if you’re using a public portfolio) into the **Power BI Report** button at the top.
+
+---
+
+## Power BI file
+The main report is here:
+- `powerbi/supply_chain_dashboard.pbix`
+
+Recommended repo structure:
+- Keep the PBIX in `powerbi/`
+- Keep measures documentation in `powerbi/measures.md` (optional)
+- Keep screenshots in `docs/images/`
+
 ---
 
 ## Data model
 Use either:
-1) **Star schema** (enterprise style): facts + dims, documented in `data/schema/schema_star.md`
-2) **Flat extract** (easiest for Tableau Public): `data/processed/fact_supply_chain_flat.csv`
+1) **Star schema** (recommended for Power BI): facts + dims, documented in `data/schema/schema_star.md`
+2) **Flat extract** (fastest setup): `data/processed/fact_supply_chain_flat.csv`
 
 ---
 
@@ -68,33 +86,41 @@ Use either:
 
 ---
 
-## Quick start
+## Quick start (Power BI)
 1. Drop CSVs into:
    - `data/raw/po_lines.csv`
    - `data/raw/shipments.csv`
    - (optional) `data/raw/inventory_snapshot.csv`
    - (optional) `data/raw/quality_events.csv`
 
-2. In Tableau Public:
-   - Connect to CSV(s)
-   - Use **Relationships** (recommended) OR connect to the flat extract
-   - Recreate sheets using `tableau/calculated_fields.md`
+2. Open the Power BI report:
+   - Open `powerbi/supply_chain_dashboard.pbix`
+   - Go to **Transform data (Power Query)** and point file paths to your `data/raw/` CSVs
+   - **Refresh** the model
 
-3. Publish to Tableau Public and paste your link above.
+3. Validate model setup in Power BI:
+   - Confirm **relationships** (Model view)
+   - Confirm **date table** and mark it as a Date table (if applicable)
+   - Validate KPI measures (OTIF, Past Due $, Expedite $, Commit Slip, etc.)
+
+4. Publish (optional):
+   - Publish to **Power BI Service**
+   - Paste the **report link** into the “Power BI Report (add link)” button above
+   - (If using a public portfolio) use **Publish to web** only with non-sensitive/demo data
 
 ---
 
-## Suggested dashboard pages (Tableau)
+## Suggested dashboard pages (Power BI)
 **Page 1 — Executive Control Tower**
-- KPI tiles: OTIF, Past Due $, Commit Slip, Expedite $, Shortage Risk, Quality Holds
+- KPI cards: OTIF, Past Due $, Commit Slip, Expedite $, Shortage Risk, Quality Holds
 - Trend: OTIF + Past Due by week
-- Heatmap: Supplier × Site (late-risk density)
-- Filters: Program/Tool Family, Site, Commodity, Supplier, Month
+- Heatmap/Matrix: Supplier × Site (late-risk density)
+- Slicers: Program/Tool Family, Site, Commodity, Supplier, Month
 
 **Page 2 — Supplier Performance**
 - Supplier scorecard table (OTIF, slip, churn, PPM, holds)
 - Pareto of late $ / late qty
-- Part-level hotlist
+- Part-level hotlist (top late-risk parts)
 
 **Page 3 — Inbound Logistics**
 - Expedite $ trend + mode share
@@ -109,3 +135,6 @@ Use either:
 
 ## License
 MIT (see `LICENSE`)
+```
+
+If you want, paste your actual Power BI report link (Service share link or publish-to-web link) and I’ll drop it into the top button so it’s ready to copy-paste.
