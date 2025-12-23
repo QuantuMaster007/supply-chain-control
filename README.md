@@ -88,7 +88,7 @@ Below are **sample outputs** you can replace after refresh with your data.
 ---
 
 ## 📂 Repo Structure
-
+```
 └─ supply-chain-control/
    ├─ .github/
    │  └─ copilot-instructions.md
@@ -139,7 +139,6 @@ Below are **sample outputs** you can replace after refresh with your data.
    ├─ .gitignore
    ├─ LICENSE
    └─ README.md
-
 ---
 
 ## 🚀 Getting Started
