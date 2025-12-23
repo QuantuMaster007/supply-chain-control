@@ -4,7 +4,9 @@
 A **Power BI dashboard + case-study portfolio** that turns supply noise (PO lines, commits, shipments, holds) into **exec-ready decisions** across supplier performance, inbound logistics, shortages, and factory readiness.
 
 <p align="left">
-  <a href="#"><b>🚀 Open Power BI Report (add link)</b></a>
+  <a href="docs/images/dashboard_preview.png" target="_blank" rel="noopener noreferrer">
+  <b>🚀 Open Power BI Report</b>
+</a>
   &nbsp;•&nbsp;
   <a href="powerbi/supply_chain_dashboard.pbix"><b>📊 Download PBIX</b></a>
   &nbsp;•&nbsp;
