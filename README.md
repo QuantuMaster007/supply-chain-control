@@ -1,11 +1,8 @@
-Here’s an updated **README welcome page** that swaps **Tableau → Power BI**, and references your attached PBIX (recommend storing it in the repo under `powerbi/`).
-
-```md
 # supply-chain-control 🚚⚡📦
-A **Power BI** dashboard + case-study portfolio that mirrors **semiconductor-grade supply chain governance**—spanning supplier performance, PO/commit health, inbound logistics, shortages, and factory readiness for complex tool/module manufacturing.
+**Power BI Supply Chain Control Tower** — semiconductor-style governance for supplier performance, commit health, inbound logistics, shortages, and factory readiness.
 
 <p align="left">
-  <a href="#"><b>🔗 Power BI Report (add link)</b></a>
+  <a href="#"><b>🔗 Open Power BI Report (add link)</b></a>
   &nbsp;•&nbsp;
   <a href="powerbi/supply_chain_dashboard.pbix"><b>📊 Download PBIX</b></a>
   &nbsp;•&nbsp;
@@ -16,54 +13,127 @@ A **Power BI** dashboard + case-study portfolio that mirrors **semiconductor-gra
   <a href="docs/case-studies/"><b>📚 Case Studies</b></a>
 </p>
 
----
-
-## What this portfolio shows
-**Semiconductor-style operating rigor** for hardware manufacturing supply chains:
-- **OTIF / Past Due / Commit health** by supplier, commodity, site
-- **Lead time drift** and reschedule churn (commit volatility)
-- **Inbound logistics performance** (mode, carrier, lane, expedite burn)
-- **Shortage early-warning** (time-phased supply vs build demand)
-- **Quality holds + NCR impact** on delivery and readiness
-- **Factory readiness gating** (kitting, dock-to-stock, critical path parts)
+<!-- Optional badges (uncomment if you like)
+![Power BI](https://img.shields.io/badge/Power%20BI-Report-yellow)
+![Status](https://img.shields.io/badge/Portfolio-Ready-brightgreen)
+-->
 
 ---
 
-## Dashboard overview (Power BI)
-Add your screenshots in `docs/images/` and keep these paths unchanged:
+## ✨ What this repo is
+This project turns daily supply noise (PO lines, commits, shipments, holds) into **decision-ready signals**:
 
-**Dashboard Preview**
+- **Power BI Control Tower:** executive KPIs + trends + drilldowns (supplier/site/commodity/part)
+- **Supply chain governance stories:** realistic case studies with KPIs, root cause, and recovery actions
+- **Clean data model:** star schema option + flat extract option for quick demos
+
+> **Use it for:** weekly ops reviews (WBR), shortage war-room, supplier QBRs, and exec-ready readouts.
+
+---
+
+## 🖥️ Power BI Control Tower
+**Report file:**  
+👉 `powerbi/supply_chain_dashboard.pbix`
+
+**What you can do**
+- Slice by **Supplier / Commodity / Site / Program / Month**
+- Identify **late-risk density** (heatmap) and top late drivers (pareto/treemap)
+- Track **commit volatility** (reschedules, slip) and its impact on OTIF
+- Monitor **expedite burn** by lane/mode/carrier (if available)
+- Drill into a **part-level hotlist** with owners/ETAs (recommended)
+
+### Screenshots here
+Add your screenshots in `docs/images/` (keep these paths unchanged):
+
 ![Dashboard Preview](docs/images/dashboard_preview.png)
-
-**Supplier Heatmap Example**
 ![Supplier Heatmap](docs/images/heatmap_example.png)
-
-**Pareto / Treemap Example**
 ![Treemap Example](docs/images/treemap_example.png)
 
-> Tip: If you publish the report to the Power BI Service, paste the **Share link** (or “Publish to web” link, if you’re using a public portfolio) into the **Power BI Report** button at the top.
+---
+
+## 🔎 Key Findings (sample KPIs)
+> Example KPI targets / placeholders you can replace after refresh.
+
+- **OTIF %:** 13.7%  
+- **Past Due $:** $9,365,982  
+- **Expedite Spend:** $1,611,166  
+- **Avg Commit Slip:** 12.6 days  
+- **Reschedule Rate:** 66.7%  
+- **Quality Hold Rate:** 8.8%  
+
+**Where to look first**
+- Supplier × Site heatmap to find concentrated late-risk
+- Pareto of **Late $** to isolate the top drivers
+- Commit volatility trend to spot chronic schedule churn
 
 ---
 
-## Power BI file
-The main report is here:
-- `powerbi/supply_chain_dashboard.pbix`
-
-Recommended repo structure:
-- Keep the PBIX in `powerbi/`
-- Keep measures documentation in `powerbi/measures.md` (optional)
-- Keep screenshots in `docs/images/`
+## 🧩 How it works (data → model → insights → actions)
+1. **Input data (CSV):** raw extracts under `data/raw/`
+2. **Model:** relationships (dims → facts), date table, KPI measures
+3. **Report:** exec summary page + drilldown pages
+4. **Output:** decisions + recovery actions (case studies + owners + timelines)
 
 ---
 
-## Data model
+## 📂 Repo Structure
+supply-chain-control/
+├─ powerbi/
+│ └─ supply_chain_dashboard.pbix
+├─ data/
+│ ├─ raw/
+│ │ ├─ po_lines.csv
+│ │ ├─ shipments.csv
+│ │ ├─ inventory_snapshot.csv # optional
+│ │ └─ quality_events.csv # optional
+│ ├─ processed/
+│ │ └─ fact_supply_chain_flat.csv # optional fast path
+│ └─ schema/
+│ ├─ data_dictionary.md
+│ └─ schema_star.md
+├─ docs/
+│ ├─ kpi_glossary.md
+│ ├─ case-studies/
+│ └─ images/
+└─ LICENSE
+
+
+---
+
+## 🚀 Getting Started
+
+### Option A — Open the PBIX (fastest)
+1. Open: `powerbi/supply_chain_dashboard.pbix`
+2. Click **Refresh**
+3. Validate visuals + KPI totals
+
+### Option B — Point Power Query to your CSVs
+1. Put CSVs into `data/raw/`
+2. In Power BI Desktop: **Transform data**
+3. Update file paths / parameters to your `data/raw/` files
+4. **Close & Apply** → **Refresh**
+
+### Option C — Publish (optional)
+1. Publish to **Power BI Service**
+2. Replace the top link:
+   - `🔗 Open Power BI Report (add link)` → paste your report URL
+
+> If this repo is public, use **sanitized/demo data** only.
+
+---
+
+## 🧱 Data model
 Use either:
-1) **Star schema** (recommended for Power BI): facts + dims, documented in `data/schema/schema_star.md`
-2) **Flat extract** (fastest setup): `data/processed/fact_supply_chain_flat.csv`
+
+1) **Star schema** (recommended): facts + dims  
+   Documented in `data/schema/schema_star.md`
+
+2) **Flat extract** (fastest demo):  
+   `data/processed/fact_supply_chain_flat.csv`
 
 ---
 
-## Case Studies (realistic stories + KPIs)
+## 📚 Case Studies (realistic stories + KPIs)
 1. **OTIF Recovery for Long-Lead Subsystems (Chambers & RF)**  
    `docs/case-studies/case-study-01-otif-recovery.md`  
    ![Case 01](docs/images/case01.png)
@@ -86,55 +156,35 @@ Use either:
 
 ---
 
-## Quick start (Power BI)
-1. Drop CSVs into:
-   - `data/raw/po_lines.csv`
-   - `data/raw/shipments.csv`
-   - (optional) `data/raw/inventory_snapshot.csv`
-   - (optional) `data/raw/quality_events.csv`
+## 📑 Input Schema (minimum)
+Your CSVs should support fields like:
 
-2. Open the Power BI report:
-   - Open `powerbi/supply_chain_dashboard.pbix`
-   - Go to **Transform data (Power Query)** and point file paths to your `data/raw/` CSVs
-   - **Refresh** the model
+**PO lines**
+- `po_number, line_id, supplier, commodity, site, part_number, open_qty, unit_price, need_by_date, promise_date, reschedule_count`
 
-3. Validate model setup in Power BI:
-   - Confirm **relationships** (Model view)
-   - Confirm **date table** and mark it as a Date table (if applicable)
-   - Validate KPI measures (OTIF, Past Due $, Expedite $, Commit Slip, etc.)
+**Shipments**
+- `shipment_id, carrier, mode, lane, ship_date, delivery_date, expedite_flag, freight_cost`
 
-4. Publish (optional):
-   - Publish to **Power BI Service**
-   - Paste the **report link** into the “Power BI Report (add link)” button above
-   - (If using a public portfolio) use **Publish to web** only with non-sensitive/demo data
+**Inventory snapshot (optional)**
+- `part_number, site, on_hand_qty, safety_stock, snapshot_date`
+
+**Quality events (optional)**
+- `part_number, supplier, quality_hold_flag, ncr_id, event_date, disposition`
+
+See: `data/schema/data_dictionary.md`
 
 ---
 
-## Suggested dashboard pages (Power BI)
-**Page 1 — Executive Control Tower**
-- KPI cards: OTIF, Past Due $, Commit Slip, Expedite $, Shortage Risk, Quality Holds
-- Trend: OTIF + Past Due by week
-- Heatmap/Matrix: Supplier × Site (late-risk density)
-- Slicers: Program/Tool Family, Site, Commodity, Supplier, Month
-
-**Page 2 — Supplier Performance**
-- Supplier scorecard table (OTIF, slip, churn, PPM, holds)
-- Pareto of late $ / late qty
-- Part-level hotlist (top late-risk parts)
-
-**Page 3 — Inbound Logistics**
-- Expedite $ trend + mode share
-- Lane/carrier on-time + delay reasons
-- Dock-to-stock and ASN compliance (if available)
-
-**Page 4 — Readiness & Shortage Risk**
-- Next 6-week coverage and risk flags
-- Critical-path parts (Tier-A) list with owners and ETAs
+## 🗺️ Roadmap (optional)
+- [ ] Add **budget vs actual** (expedite + premium freight + PPV)
+- [ ] Add **risk scoring** (late $ × criticality × lead time × volatility)
+- [ ] Add **“Exec Summary” export** (PDF/PNG snapshots)
+- [ ] Add **owner + ETA workflow** for part hotlist (recovery tracker)
 
 ---
 
-## License
-MIT (see `LICENSE`)
-```
+## 🔒 License
+**Private License — View Only (All Rights Reserved)**
 
-If you want, paste your actual Power BI report link (Service share link or publish-to-web link) and I’ll drop it into the top button so it’s ready to copy-paste.
+Permission is granted to **view** this repository for evaluation purposes only.  
+No permission is granted to use, copy, modify, publish, distribute, sublicense, or sell any part of this project (including the Power BI report, datasets, documentation, and images) without explicit written permission from the author.
