@@ -140,7 +140,7 @@ Below are **sample outputs** you can replace after refresh with your data.
    ├─ LICENSE
    └─ README.md
 ---
-
+```
 ## 🚀 Getting Started
 
 ### Option A — Open the PBIX (fastest)
@@ -161,7 +161,6 @@ Below are **sample outputs** you can replace after refresh with your data.
 
 > If this repo is public, use **sanitized/demo data only**.
 
----
 
 ## 🧱 Schema (minimum fields)
 Your CSVs should support fields like:
