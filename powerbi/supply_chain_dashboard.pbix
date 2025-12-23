@@ -1,0 +1,92 @@
+
+---
+
+## 🚀 Getting Started
+
+### Option A — Open the PBIX (fastest)
+1. Open: `powerbi/supply_chain_dashboard.pbix`
+2. Click **Refresh**
+3. Validate visuals + KPI totals
+
+### Option B — Point Power Query to your CSVs
+1. Put CSVs into `data/raw/`
+2. In Power BI Desktop: **Transform data**
+3. Update file paths / parameters to your `data/raw/` files
+4. **Close & Apply** → **Refresh**
+
+### Option C — Publish (optional)
+1. Publish to **Power BI Service**
+2. Replace the top link:
+   - `🔗 Open Power BI Report (add link)` → paste your report URL
+
+> If this repo is public, use **sanitized/demo data** only.
+
+---
+
+## 🧱 Data model
+Use either:
+
+1) **Star schema** (recommended): facts + dims  
+   Documented in `data/schema/schema_star.md`
+
+2) **Flat extract** (fastest demo):  
+   `data/processed/fact_supply_chain_flat.csv`
+
+---
+
+## 📚 Case Studies (realistic stories + KPIs)
+1. **OTIF Recovery for Long-Lead Subsystems (Chambers & RF)**  
+   `docs/case-studies/case-study-01-otif-recovery.md`  
+   ![Case 01](docs/images/case01.png)
+
+2. **Expedite Spend Reduction + Lane Discipline**  
+   `docs/case-studies/case-study-02-expedite-cost.md`  
+   ![Case 02](docs/images/case02.png)
+
+3. **Shortage Early-Warning for Build Readiness (Next 6 Weeks)**  
+   `docs/case-studies/case-study-03-shortage-early-warning.md`  
+   ![Case 03](docs/images/case03.png)
+
+4. **PPV + Quote Variance on Precision Machined Parts**  
+   `docs/case-studies/case-study-04-commit-health-reschedule.md`  
+   ![Case 04](docs/images/case04.png)
+
+5. **Line-Down Prevention via ASN + Dock-to-Stock + Kitting**  
+   `docs/case-studies/case-study-05-quality-hold-recovery.md`  
+   ![Case 05](docs/images/case05.png)
+
+---
+
+## 📑 Input Schema (minimum)
+Your CSVs should support fields like:
+
+**PO lines**
+- `po_number, line_id, supplier, commodity, site, part_number, open_qty, unit_price, need_by_date, promise_date, reschedule_count`
+
+**Shipments**
+- `shipment_id, carrier, mode, lane, ship_date, delivery_date, expedite_flag, freight_cost`
+
+**Inventory snapshot (optional)**
+- `part_number, site, on_hand_qty, safety_stock, snapshot_date`
+
+**Quality events (optional)**
+- `part_number, supplier, quality_hold_flag, ncr_id, event_date, disposition`
+
+See: `data/schema/data_dictionary.md`
+
+---
+
+## 🗺️ Roadmap (optional)
+- [ ] Add **budget vs actual** (expedite + premium freight + PPV)
+- [ ] Add **risk scoring** (late $ × criticality × lead time × volatility)
+- [ ] Add **“Exec Summary” export** (PDF/PNG snapshots)
+- [ ] Add **owner + ETA workflow** for part hotlist (recovery tracker)
+
+---
+
+## 🔒 License
+**Private License — View Only (All Rights Reserved)**
+
+Permission is granted to **view** this repository for evaluation purposes only.  
+No permission is granted to use, copy, modify, publish, distribute, sublicense, or sell any part of this project (including the Power BI report, datasets, documentation, and images) without explicit written permission from the author.
+
