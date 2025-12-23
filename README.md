@@ -53,10 +53,10 @@ This repo is built like a real Ops/TPM program—**not** a generic dashboard.
 ![Dashboard Preview](docs/images/dashboard_preview.png)
 
 **Supplier Heatmap Example**  
-![Supplier Heatmap](docs/images/heatmap_example.png)
+![Supplier Heatmap](docs/images/Supplier_Heatmap.png)
 
 **Pareto / Treemap Example**  
-![Treemap Example](docs/images/treemap_example.png)
+![Treemap Example](docs/images/Pareto_Example.png)
 
 ---
 
@@ -92,24 +92,19 @@ Below are **sample outputs** you can replace after refresh with your data.
 supply-chain-control/
 ├─ README.md
 ├─ PRIVATE_LICENSE.md
-│
 ├─ powerbi/
 │  └─ supply_chain_dashboard.pbix
-│
 ├─ data/
 │  ├─ raw/
 │  │  ├─ po_lines.csv
 │  │  ├─ shipments.csv
 │  │  ├─ inventory_snapshot.csv
 │  │  └─ quality_events.csv
-│  │
 │  ├─ processed/
 │  │  └─ fact_supply_chain_flat.csv
-│  │
 │  └─ schema/
 │     ├─ data_dictionary.md
 │     └─ schema_star.md
-│
 └─ docs/
    ├─ kpi_glossary.md
    ├─ case-studies/
@@ -118,7 +113,6 @@ supply-chain-control/
    │  ├─ case-study-03-shortage-early-warning.md
    │  ├─ case-study-04-commit-health-reschedule.md
    │  └─ case-study-05-line-down-prevention.md
-   │
    └─ images/
       ├─ dashboard_preview.png
       ├─ heatmap_example.png
@@ -128,8 +122,6 @@ supply-chain-control/
       ├─ case03.png
       ├─ case04.png
       └─ case05.png
-
-
 ---
 
 ---
