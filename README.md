@@ -18,7 +18,7 @@ A **Power BI dashboard + case-study portfolio** that turns supply noise (PO line
 </p>
 
 ![Power BI](https://img.shields.io/badge/Power%20BI-Control%20Tower-yellow)
-![Portfolio](https://img.shields.io/badge/Hiring%20Manager-Ready-brightgreen)
+![Portfolio](https://img.shields.io/badge/Ready-brightgreen)
 ![License](https://img.shields.io/badge/License-Private%20(All%20Rights%20Reserved)-red)
 
 ---
