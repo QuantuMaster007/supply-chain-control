@@ -89,40 +89,56 @@ Below are **sample outputs** you can replace after refresh with your data.
 
 ## 📂 Repo Structure
 
-supply-chain-control/
-├─ README.md
-├─ PRIVATE_LICENSE.md
-├─ powerbi/
-│  └─ supply_chain_dashboard.pbix
-├─ data/
-│  ├─ raw/
-│  │  ├─ po_lines.csv
-│  │  ├─ shipments.csv
-│  │  ├─ inventory_snapshot.csv
-│  │  └─ quality_events.csv
-│  ├─ processed/
-│  │  └─ fact_supply_chain_flat.csv
-│  └─ schema/
-│     ├─ data_dictionary.md
-│     └─ schema_star.md
-└─ docs/
-   ├─ kpi_glossary.md
-   ├─ case-studies/
-   │  ├─ case-study-01-otif-recovery.md
-   │  ├─ case-study-02-expedite-cost.md
-   │  ├─ case-study-03-shortage-early-warning.md
-   │  ├─ case-study-04-commit-health-reschedule.md
-   │  └─ case-study-05-line-down-prevention.md
-   └─ images/
-      ├─ dashboard_preview.png
-      ├─ heatmap_example.png
-      ├─ treemap_example.png
-      ├─ case01.png
-      ├─ case02.png
-      ├─ case03.png
-      ├─ case04.png
-      └─ case05.png
----
+└─ supply-chain-control/
+   ├─ .github/
+   │  └─ copilot-instructions.md
+   ├─ data/
+   │  ├─ processed/
+   │  │  ├─ dim_calendar.csv
+   │  │  └─ fact_supply_chain_flat.csv
+   │  ├─ raw/
+   │  │  ├─ inventory_snapshot.csv
+   │  │  ├─ po_lines.csv
+   │  │  ├─ quality_events.csv
+   │  │  └─ shipments.csv
+   │  └─ schema/
+   │     ├─ data_dictionary.md
+   │     └─ schema_star.md
+   ├─ docs/
+   │  ├─ assets/
+   │  │  ├─ app.js
+   │  │  └─ style.css
+   │  ├─ case-studies/
+   │  │  ├─ case-study-01-otif-recovery.md
+   │  │  ├─ case-study-02-expedite-cost.md
+   │  │  ├─ case-study-03-shortage-early-warning.md
+   │  │  ├─ case-study-04-commit-health-reschedule.md
+   │  │  ├─ case-study-04-ppv-should-cost.md
+   │  │  ├─ case-study-05-line-down-prevention.md
+   │  │  └─ case-study-05-quality-hold-recovery.md
+   │  ├─ data/
+   │  │  └─ processed/
+   │  │     └─ fact_supply_chain_flat.csv
+   │  ├─ images/
+   │  │  ├─ case01.png
+   │  │  ├─ case02.png
+   │  │  ├─ case03.png
+   │  │  ├─ case04.png
+   │  │  ├─ case05.png
+   │  │  ├─ dashboard_preview.png
+   │  │  ├─ Pareto_Example.png
+   │  │  ├─ README.txt
+   │  │  └─ Supplier_Heatmap.png
+   │  ├─ index.html
+   │  ├─ kpi_glossary.md
+   │  └─ README.txt
+   ├─ powerbi/
+   │  ├─ supply_chain_dashboard Template.pbit
+   │  ├─ supply_chain_dashboard.pbix
+   │  └─ supply_chain_dashboard.pptx
+   ├─ .gitignore
+   ├─ LICENSE
+   └─ README.md
 
 ---
 
