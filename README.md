@@ -99,8 +99,6 @@ Below are **sample outputs** you can replace after refresh with your data.
 ## 📂 Repo Structure
 ```
 └─ supply-chain-control/
-   ├─ .github/
-   │  └─ copilot-instructions.md
    ├─ data/
    │  ├─ processed/
    │  │  ├─ dim_calendar.csv
