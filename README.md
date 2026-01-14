@@ -49,15 +49,20 @@ This repo is built like a real Ops/TPM program—**not** a generic dashboard.
 - Drill into the **part-level hotlist** to drive owner + ETA recovery actions
 
 ### Screenshots (keep paths unchanged)
-
-<p align="left"><b>Project Previews</b></p>
-<div style="display: flex; flex-direction: row; gap: 10px;">
-  <img src="docs/images/dashboard_preview.png" alt="Dashboard Preview" height="260" />
-  <img src="docs/images/Supplier_Heatmap.png" alt="Supplier Heatmap" height="260" />
-  <img src="docs/images/Pareto_Example.png" alt="Pareto/Treemap" height="260" />
-</div>
-
 ---
+
+<table>
+  <tr>
+    <td align="center"><b>Dashboard Preview</b></td>
+    <td align="center"><b>Supplier Heatmap</b></td>
+    <td align="center"><b>Pareto / Treemap</b></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/dashboard_preview.png" height="260" /></td>
+    <td><img src="docs/images/Supplier_Heatmap.png" height="260" /></td>
+    <td><img src="docs/images/Pareto_Example.png" height="260" /></td>
+  </tr>
+</table>
 
 ---
 
