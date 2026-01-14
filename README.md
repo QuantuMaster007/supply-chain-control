@@ -48,7 +48,7 @@ This repo is built like a real Ops/TPM program—**not** a generic dashboard.
 - Diagnose **commit drift & reschedule churn** before it becomes line-down risk
 - Drill into the **part-level hotlist** to drive owner + ETA recovery actions
 
-### Screenshots (keep paths unchanged)
+### Screenshots 
 ---
 
 <table>
