@@ -58,9 +58,21 @@ This repo is built like a real Ops/TPM program—**not** a generic dashboard.
     <td align="center"><b>Pareto / Treemap</b></td>
   </tr>
   <tr>
-    <td><img src="docs/images/dashboard_preview.png" height="260" /></td>
-    <td><img src="docs/images/Supplier_Heatmap.png" height="260" /></td>
-    <td><img src="docs/images/Pareto_Example.png" height="260" /></td>
+    <td>
+      <a href="docs/images/dashboard_preview.png">
+        <img src="docs/images/dashboard_preview.png" height="260" />
+      </a>
+    </td>
+    <td>
+      <a href="docs/images/Supplier_Heatmap.png">
+        <img src="docs/images/Supplier_Heatmap.png" height="260" />
+      </a>
+    </td>
+    <td>
+      <a href="docs/images/Pareto_Example.png">
+        <img src="docs/images/Pareto_Example.png" height="260" />
+      </a>
+    </td>
   </tr>
 </table>
 
