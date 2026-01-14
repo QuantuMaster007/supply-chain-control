@@ -50,20 +50,12 @@ This repo is built like a real Ops/TPM program—**not** a generic dashboard.
 
 ### Screenshots (keep paths unchanged)
 
-<p align="left">
-  <b>Dashboard Preview</b><br/>
-  <img src="docs/images/dashboard_preview.png" height="260" />
-</p>
-
-<p align="left">
-  <b>Supplier Heatmap Example</b><br/>
-  <img src="docs/images/Supplier_Heatmap.png" height="260" />
-</p>
-
-<p align="left">
-  <b>Pareto / Treemap Example</b><br/>
-  <img src="docs/images/Pareto_Example.png" height="260" />
-</p>
+<p align="left"><b>Project Previews</b></p>
+<div style="display: flex; flex-direction: row; gap: 10px;">
+  <img src="docs/images/dashboard_preview.png" alt="Dashboard Preview" height="260" />
+  <img src="docs/images/Supplier_Heatmap.png" alt="Supplier Heatmap" height="260" />
+  <img src="docs/images/Pareto_Example.png" alt="Pareto/Treemap" height="260" />
+</div>
 
 ---
 
